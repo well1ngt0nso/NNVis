@@ -6,26 +6,38 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script type="text/JavaScript" src="java.js" defer></script>
 
-	<title></title>
+	<title>NNVis</title>
 </head>
 	<body>
-    <div id="network-wrapper"></div>
-		<div id="config">
+    
+    <div>
+      <h1> NNVis </h1>
+    </div>
+    <figure class="quote">
+          <blockquote>
+               [Aprendizado de máquina é o] campo de estudo que dá aos computadores a habilidade de aprender sem serem explicitamente programados
+          </blockquote>
+          <figcaption>
+            &mdash; Arthur Samuel , <cite>Too Big to Ignore: The Business Case for Big Data</cite>  </figcaption>
+    </figure>
 
-    <!--<label for="input">N° de Entradas </label>
-    <input class="parametros" id="input"  type="number" placeholder="Num entradas"  min="1">
-    <label for="output">N° de Saídas </label>
-    <input class="parametros" id="output" type="number" placeholder="Num saídas"  min="1"> -->
 
-    <!-- Campo que controla quantas camadas haverá -->
-    <label for="layer">N° de Camadas Ocultas </label>
-    <input class="parametros" id="layer"  type="number" placeholder="Num camadas"  min="1" max ="25">
+    <div id="generate">
+          <div id="network-wrapper"></div>
 
-    <!-- Aqui dentro surgirão os inputs de cada camada -->
-    <div id="layers-wrapper"></div>
+          <div id="config">
 
-    <button id="btn-gerar">Gerar</button>
+                  <!-- Campo que controla quantas camadas haverá -->
+                  <label for="layer">N° de Camadas Ocultas </label>
+                  <input class="parametros" id="layer"  type="number" placeholder="Num camadas"  min="1" max ="10">
+
+                  <!-- Aqui dentro surgirão os inputs de cada camada -->
+                  <div id="layers-wrapper"></div>
+
+                  <button id="btn-gerar">Gerar</button>
+      </div>
 </div>
+
 		<!-- <input class = "parametros", type="text">-->
 	</body>
 </html>

@@ -1,7 +1,7 @@
 // roda quando o DOM estiver pronto (porque usamos "defer" no <script>)
 document.addEventListener('DOMContentLoaded', () => {
 
-    const camadasInp = document.getElementById('layer');
+      const camadasInp = document.getElementById('layer');
     const wrapper = document.getElementById('layers-wrapper');
     const btnGerar = document.getElementById('btn-gerar');
 
@@ -10,11 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
      ───────────────────────── */
     camadasInp.addEventListener('input', () => {
         const qtd = parseInt(camadasInp.value, 10) || 0;
-        renderizarCamposCamada(qtd);
+        if(qtd < 11){
+            renderizarCamposCamada(qtd);
+        }else{
+               renderizarCamposCamada(0);
+        }
+
     });
 
     /* ─────────────────────────
-    N° entrada mínima
+    N° entrada mínima e máxima
      ───────────────────────── */
 
     camadasInp.addEventListener('input', () => {
@@ -25,10 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
             camadasInp.setCustomValidity("O mínimo de camadas 1");
             camadasInp.reportValidity();
             camadasInp.value = ""; 
-        } else {
-            camadasInp.setCustomValidity("");
+        } else if (qtd > 10){
+            camadasInp.setCustomValidity("O máximo de camadas é 10");
+            camadasInp.reportValidity();
+            camadasInp.value = ""; 
+            
+            
+        }else {
+             camadasInp.setCustomValidity(""); // limpa erro
+        camadasInp.reportValidity();
+        camadasInp.value = qtd;
+         
         }
     });
+
+
 
 
     function renderizarCamposCamada(qtd) {
@@ -104,7 +120,10 @@ function desenharRede(estrutura) {
 
     svg.style.border = '1px solid #ccc';
     wrapper.appendChild(svg);
+    
 
+  
+   
 
 
     // ===========  FUNC CÍRCULOS ===========
