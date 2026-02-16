@@ -1,9 +1,10 @@
 // roda quando o DOM estiver pronto (porque usamos "defer" no <script>)
 document.addEventListener('DOMContentLoaded', () => {
 
-      const camadasInp = document.getElementById('layer');
+    const camadasInp = document.getElementById('layer');
     const wrapper = document.getElementById('layers-wrapper');
     const btnGerar = document.getElementById('btn-gerar');
+
 
     /* ─────────────────────────
      Atualiza campos de camada
@@ -79,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // vetor completo [input, hidden1, hidden2, ..., output]
         const estrutura = [neuroniosOcultas[0], ...neuroniosOcultas, neuroniosOcultas[neuroniosOcultas.length - 1]];
         //const estrutura = [entradas, entradas, ...neuroniosOcultas, saidas,saidas];
-
+        
+      
         /* ───────────
          2. Desenhar
          ─────────── */
@@ -88,11 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function desenharRede(estrutura) {
+    const gerar = document.getElementById('generate');
+
     const ids = []; //neurônios
     const ids_bias = []; 
     const ids_func = [];
     const ids_line = []; // limhas/setas
     const ids_square = [];
+    const ids_legend = [];
+
 
     var r = 20;
     var lineDi = 20; // Distãncia entre linhas
@@ -100,6 +106,7 @@ function desenharRede(estrutura) {
     const colunas = estrutura.length; //nnumero de camadas 
     const maxNeuro = Math.max(...estrutura); // maior nº de neurônios
     const linhasGrade = 1 + maxNeuro; // 1 (bias) + visíveis 
+    
 
     /* ─── dimensões do SVG ─── */
     const wrapper = document.getElementById('network-wrapper');
@@ -109,6 +116,11 @@ function desenharRede(estrutura) {
     const hSVG = 100 + (maxNeuro + 1) * (2 * r) + (maxNeuro + 2) * lineDi; //Neuro + bias * diametro + a mesma quantidade + 1 para espaço * valor
     const MwSVG = 1100;
     const MhSVG = hSVG / 2;
+    
+
+    // dimensão div pai
+    gerar.style.height = (hSVG + 200) + "px";
+
 
     /* ─── cria SVG ─── */
     const svgNS = 'http://www.w3.org/2000/svg';
@@ -157,7 +169,7 @@ function desenharRede(estrutura) {
     function generateSquare(cx, cy, point) {
         const square = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 
-        const id = `eq-${ids_square.length}`;
+        const id = `eq-${point.length}`;
         square.setAttribute("id", id);
 
         const size = 40; // Tamanho do lado do quadrado
@@ -182,7 +194,7 @@ function desenharRede(estrutura) {
     function generatePolygon(cx, cy, point) {
         const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
 
-        const id = `ep-${ids_func.length}`;
+        const id = `ep-${point.length}`;
         polygon.setAttribute("id", id);
 
         const size = 40; // tamanho do quadrado
@@ -207,6 +219,33 @@ function desenharRede(estrutura) {
         svg.appendChild(polygon);
         point.push(id);
     }
+
+
+
+    //gerar legenda
+    generateSquare(wSVG - 400 , hSVG - 29, ids_legend);
+    const square_legend = document.getElementById(ids_legend[0]);
+    square_legend.setAttribute('id', "ele_0");
+    ids_legend[0] = "ele_0";
+
+    generateCircle(wSVG - 300, hSVG - 29, 20, "black", ids_legend);
+    const circle_legend = document.getElementById(ids_legend[1]);
+    circle_legend.setAttribute('id', "ele_1");
+    ids_legend[1] = "ele_1";
+
+    generatePolygon(wSVG -200, hSVG - 29, ids_legend);
+    const polygon_legend = document.getElementById(ids_legend[2]);
+    polygon_legend.setAttribute('id', "ele_2");
+    ids_legend[2] = "ele_2";
+
+    generateCircle(wSVG - 100 , hSVG - 29, 20, "red", ids_legend);
+    const bias_legend = document.getElementById(ids_legend[3]);
+    bias_legend.setAttribute('id', "ele_3");
+    ids_legend[0] = "ele_3";
+
+
+
+    //generateCircle(); 
 
 
     //GERADOR DE NEURÔRIOS
@@ -486,6 +525,16 @@ function desenharRede(estrutura) {
 
 
 
-
+// seu SVG já criado e adicionado ao DOM
+svgPanZoom(svg, {
+    zoomEnabled: true,
+    controlIconsEnabled: false,
+    fit: false,
+    center: false,
+    minZoom: 0.5,
+    maxZoom: 3
+});
 
 }
+
+
