@@ -86,10 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
          2. Desenhar
          ─────────── */
         desenharRede(estrutura);
-<<<<<<< HEAD
        
-=======
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
     });
 });
 
@@ -101,12 +98,8 @@ function desenharRede(estrutura) {
     const ids_func = [];
     const ids_line = []; // limhas/setas
     const ids_square = [];
-<<<<<<< HEAD
     const ids_legend = []; //apenas simbologia
     const ids_texto = []; // texto em si
-=======
-    const ids_legend = [];
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
 
 
     var r = 20;
@@ -231,7 +224,6 @@ function desenharRede(estrutura) {
 
 
 
-<<<<<<< HEAD
 
     // =========== FUNC TEXT =============
 
@@ -260,15 +252,10 @@ function desenharRede(estrutura) {
 
     //gerar legenda
     generateSquare(wSVG - 1000 , hSVG - 29, ids_legend);
-=======
-    //gerar legenda
-    generateSquare(wSVG - 400 , hSVG - 29, ids_legend);
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
     const square_legend = document.getElementById(ids_legend[0]);
     square_legend.setAttribute('id', "ele_0");
     ids_legend[0] = "ele_0";
 
-<<<<<<< HEAD
     generateTexto(wSVG - 970 , hSVG - 24, ids_texto, "VALOR DE ENTRADA/SAIDA");
 
    
@@ -310,33 +297,13 @@ function desenharRede(estrutura) {
     ids_legend[0] = "ele_3";
     generateTexto(wSVG - 70 , hSVG - 24, ids_texto, "BIAS");
 
-=======
-    generateCircle(wSVG - 300, hSVG - 29, 20, "black", ids_legend);
-    const circle_legend = document.getElementById(ids_legend[1]);
-    circle_legend.setAttribute('id', "ele_1");
-    ids_legend[1] = "ele_1";
-
-    generatePolygon(wSVG -200, hSVG - 29, ids_legend);
-    const polygon_legend = document.getElementById(ids_legend[2]);
-    polygon_legend.setAttribute('id', "ele_2");
-    ids_legend[2] = "ele_2";
-
-    generateCircle(wSVG - 100 , hSVG - 29, 20, "red", ids_legend);
-    const bias_legend = document.getElementById(ids_legend[3]);
-    bias_legend.setAttribute('id', "ele_3");
-    ids_legend[0] = "ele_3";
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
 
 
 
     //generateCircle(); 
 
 
-<<<<<<< HEAD
     //GERADOR DE NEURÔRIOS / GGERAÇÃO DE NEURÔNIOS
-=======
-    //GERADOR DE NEURÔRIOS
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
 
     var initx = 100; // Onde incia a primeira camada 
     for (let j = 0; j < colunas; j++) {
@@ -349,14 +316,11 @@ function desenharRede(estrutura) {
             //console.log(estrutura);
 
             if ((j != 0) && j != (colunas - 1)) {
-<<<<<<< HEAD
                 if((j == 1) || (j == colunas - 2)){ //pegga apenas os elementos da primeira camada e faz um circulo menor
                     generateCircle(initx, inity, 10, "purple", ids);
                     inity += d; // incrementador para a proxima linha, sem isso os circulos de sobrepoem
                     continue;
                 }
-=======
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
                 generateCircle(initx, inity, 20, "black", ids);
 
             } else {
@@ -364,11 +328,7 @@ function desenharRede(estrutura) {
 
             }
 
-<<<<<<< HEAD
             inity += d; //incrementador para a proxima linha, sem isso os circulos de sobrepoem
-=======
-            inity += d; // onde inica primeira linha
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
         }
         initx += 200; //Distancia a cada camada
     }
@@ -467,17 +427,10 @@ function desenharRede(estrutura) {
 
     createArrowMarker();
     // Função para gerar linha:
-<<<<<<< HEAD
     function generateArrow(x1, y1, x2, y2, r1, r2) {
         const line = document.createElementNS(svgNS, 'line');
         x1 += r1;
         x2 -= r2;
-=======
-    function generateArrow(x1, y1, x2, y2, r = 20) {
-        const line = document.createElementNS(svgNS, 'line');
-        x1 += r;
-        x2 -= r;
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
         line.setAttribute('x1', x1);
         line.setAttribute('y1', y1);
         line.setAttribute('x2', x2);
@@ -491,10 +444,7 @@ function desenharRede(estrutura) {
 
     // ========== GERAÇÃO DE LINHAS DA ENTRADA -> NEURÔNIO ============  100%
     //console.log(estrutura[0]);
-<<<<<<< HEAD
     /*
-=======
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
     for(let i = 0; i < estrutura[0]; i++){
         // Primeira camada: quadrado (entrada)
 
@@ -524,7 +474,6 @@ function desenharRede(estrutura) {
         generateArrow(x1, y1, x2, y2, r = 20)
 
     }
-<<<<<<< HEAD
     */
 
     // ========== GERAÇÃO DE LINHAS DA ENTRADA -> NEURÔNIO ============  100%
@@ -566,8 +515,6 @@ function desenharRede(estrutura) {
     }
 
 
-=======
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
 
 
     // ========== GERAÇÃO DE LINHAS NEURÔNIO/FUNC ATC ============      100%
@@ -587,7 +534,6 @@ function desenharRede(estrutura) {
         let x1, y1;
         x1 = parseFloat(elOrigem.getAttribute("cx"));
         y1 = parseFloat(elOrigem.getAttribute("cy"));
-<<<<<<< HEAD
         r1 = parseFloat(elOrigem.getAttribute("r"));
         r2 = parseFloat(elOrigem.getAttribute("r"));
 
@@ -596,14 +542,6 @@ function desenharRede(estrutura) {
         y2 = y1;
 
         generateArrow(x1, y1, x2, y2, r1, 0)
-=======
-
-        let x2, y2;
-        x2 = x1 + 100;
-        y2 = y1;
-
-        generateArrow(x1, y1, x2, y2, r = 20)
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
         //console.log("aqui")
         //console.log(ids.length);
 
@@ -636,16 +574,11 @@ function desenharRede(estrutura) {
                 let x2, y2;
                 x2 = parseFloat(elDet.getAttribute("cx"));
                 y2 = parseFloat(elDet.getAttribute("cy"));
-<<<<<<< HEAD
                 
 
                 
                 r2 = parseFloat(elDet.getAttribute("r"));
                 generateArrow(x1, y1, x2, y2,20, r2)
-=======
-
-                generateArrow(x1, y1, x2, y2, r = 20)
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
                 //console.log("aqui")
                 //console.log(ids.length);
 
@@ -655,7 +588,6 @@ function desenharRede(estrutura) {
 
 
         }
-<<<<<<< HEAD
         cont2 += estrutura[i]; //coluna inicial 
         cont1 += estrutura[i + 1]; //coluna de ddestino inicial + 1
 
@@ -664,15 +596,6 @@ function desenharRede(estrutura) {
     // ========== GERAÇÃO DE LINHAS DA FUNC -> SAÍDA ============  100%
     
   
-=======
-        cont2 += estrutura[i];
-        cont1 += estrutura[i + 1];
-
-    }
-
-    // ========== GERAÇÃO DE LINHAS DA ENTRADA -> NEURÔNIO ============  100%
-    
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
     for(i = 0; i < estrutura[colunas-1]; i++){
         const init = ids_func.length - estrutura[colunas -1];
         console.log(init);
@@ -696,19 +619,11 @@ function desenharRede(estrutura) {
         const eqDest = document.getElementById(ids_square[init2 + i]);
         console.log(eqDest)
         if(!eqDest) continue;
-<<<<<<< HEAD
         console.log("aqui");
         const x2 = parseFloat(eqDest.getAttribute('x'));
         const y2 = parseFloat(eqDest.getAttribute('y')) + 20;
        
         generateArrow(x1, y1, x2, y2, 0, 0);
-=======
-        console.log("aqui")
-        const x2 = parseFloat(eqDest.getAttribute('x'));
-        const y2 = parseFloat(eqDest.getAttribute('y')) + 20;
-       
-        generateArrow(x1, y1, x2, y2, r = 0);
->>>>>>> 7df5d0b6353b4de6571bfcb65f3fe1cb78755f54
         
 
 
