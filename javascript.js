@@ -1,4 +1,4 @@
-// roda quando o DOM estiver pronto (porque usamos "defer" no <script>)
+// Roda quando o DOM estiver pronto (porque usamos "defer" no <script>)
 document.addEventListener('DOMContentLoaded', () => {
 
     const camadasInp = document.getElementById('layer');
